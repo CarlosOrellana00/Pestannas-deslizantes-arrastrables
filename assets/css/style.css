@@ -16,7 +16,7 @@ body{
 .wrapper{
   padding: 35px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   max-width: 1000px;
   background: #fff;
   border-radius: 13px;
@@ -31,11 +31,12 @@ body{
 }
 .icon:first-child{
   left: 0;
-  background: linear-gradient(90deg, red 70%, transparent);
+  background: linear-gradient(90deg, #fff 70%, transparent);
 }
 .icon:last-child{
   right: 0;
-  background: linear-gradient(-90deg, red 70%, transparent);
+  justify-content: flex-end;
+  background: linear-gradient(-90deg, #fff 70%, transparent);
 }
 .icon i{
   width: 55px;
@@ -46,6 +47,9 @@ body{
   line-height: 55px;
   border-radius: 50%;
   background: #d8d5f2;
+}
+.icon i:hover{
+  background: #efedfb;
 }
 .icon:first-child i{
   margin-left: 15px;
