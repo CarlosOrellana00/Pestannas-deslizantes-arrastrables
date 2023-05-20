@@ -61,6 +61,7 @@ body{
   display: flex;
   gap: 12px;
   list-style: none;
+  overflow: hidden;
 }
 .tabs-box .tab{
   cursor: pointer;
