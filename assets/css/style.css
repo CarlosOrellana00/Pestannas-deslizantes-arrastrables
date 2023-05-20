@@ -31,6 +31,7 @@ body{
 }
 .icon:first-child{
   left: 0;
+  display: none;
   background: linear-gradient(90deg, #fff 70%, transparent);
 }
 .icon:last-child{
@@ -62,6 +63,11 @@ body{
   gap: 12px;
   list-style: none;
   overflow: hidden;
+  scroll-behavior: smooth;
+}
+.tabs-box.dragging{
+  scroll-behavior: auto;
+  cursor: grab;
 }
 .tabs-box .tab{
   cursor: pointer;
@@ -71,4 +77,7 @@ body{
   padding: 13px 20px;
   border-radius: 30px;
   border: 1px solid #d8d5f2;
+}
+.tabs-box.dragging .tab{
+  user-select: none;
 }

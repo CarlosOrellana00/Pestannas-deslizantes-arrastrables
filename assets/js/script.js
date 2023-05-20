@@ -1,21 +1,30 @@
 const tabsBox = document.querySelector(".tabs-box"),
-arrowIcons = tabsBox.querySelector(".icon i");
+arrowIcons = document.querySelectorAll(".icon i");
 
 let isDragging = false;
 
+const handleIcons = () => {
+  let scrollVall = tabsBox.scrollLeft;
+  arrowIcons[0].parentElement.style.display = scrolVal > 0 ? "flex" : "none";
+}
+
 arrowIcons.forEach(icon => {
   icon.addEventListener("click",() => {
-    console.log(icon.id);
+    // console.log(icon.id);
+    tabsBox.scrollLeft += icon.id === "left" ? -350 : 350;
+    handleIcons();
   });
 });
 
 const dragging = (e) => {
   if(!isDragging) return;
+  tabsBox.classList.add("dragging");
   tabsBox.scrollLeft -= e.movementX;
 }
 
 const dragStop = () => {
   isDragging = false;
+  tabsBox.classList.remove("dragging");
 }
 
 tabsBox.addEventListener("mousedown", () => isDragging = true);
