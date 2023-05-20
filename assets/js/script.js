@@ -1,18 +1,30 @@
 const tabsBox = document.querySelector(".tabs-box"),
+allTabs = document.querySelectorAll(".tab"),
 arrowIcons = document.querySelectorAll(".icon i");
 
 let isDragging = false;
 
 const handleIcons = () => {
-  let scrollVall = tabsBox.scrollLeft;
-  arrowIcons[0].parentElement.style.display = scrolVal > 0 ? "flex" : "none";
+  let scrollVal = Math.round(tabsBox.scrollLeft);
+  let maxScrollableWith = tabsBox.scrollWidth - tabsBox.clientWidth;
+  arrowIcons[0].parentElement.style.display = scrollVal > 0 ? "flex" : "none";
+  arrowIcons[1].parentElement.style.display = maxScrollableWith > scrollVal ? "flex" : "none";
+
 }
 
 arrowIcons.forEach(icon => {
   icon.addEventListener("click",() => {
     // console.log(icon.id);
     tabsBox.scrollLeft += icon.id === "left" ? -350 : 350;
-    handleIcons();
+    // handleIcons();
+    setTimeout(() => handleIcons(),50);
+  });
+});
+
+allTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabsBox.querySelector(".active").classList.remove("active");
+    tab.classList.add("active");
   });
 });
 
@@ -20,6 +32,7 @@ const dragging = (e) => {
   if(!isDragging) return;
   tabsBox.classList.add("dragging");
   tabsBox.scrollLeft -= e.movementX;
+  handleIcons();
 }
 
 const dragStop = () => {
